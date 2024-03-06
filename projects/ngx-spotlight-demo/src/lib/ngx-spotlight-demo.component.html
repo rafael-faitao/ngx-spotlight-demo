@@ -1,1 +1,6 @@
-<div class="main-stage" [style.zIndex]="z" style.background="radial-gradient(circle at {{circleX}}px {{circleY}}px, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%)"></div>
+<div class="main-stage" [class.show-is-over]="_showIsOver" [style.transition]="_transitionTime /1000 + 's all'" [style.zIndex]="z" [style.transform]="'translate3d(' + circleX +'px,' + circleY + 'px,0)'">
+    <div class="text" [style.transition]="_transitionTime / 1000 + 's all'" [class.show]="_showText" [style.marginTop]="_textHeight + 'px'">
+        {{_currentText}}
+    </div>
+    
+</div>

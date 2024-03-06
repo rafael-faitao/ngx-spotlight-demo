@@ -1,8 +1,38 @@
-.main-stage {
+:host {
+    overflow: hidden;
     width:100vw;
     height:100vh;
+}
+
+.main-stage {
+    width:200vw;
+    height:200vh;
     position: fixed;
-    top:0;
-    left:0;
-    transition: .2s all;
+    left: -100%;
+    top: -100%;
+   // transition: .2s all;
+    background:radial-gradient(circle at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 15%);
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    &.show-is-over {
+        opacity: 0;
+    }
+
+    .text {
+        width: 12rem;
+        background: white;
+        padding: 1rem;
+        position: relative;
+       // transition: .3s opacity;
+        opacity: 0;
+
+        &.show {
+            opacity: 1 !important;
+        }
+    }
 }
