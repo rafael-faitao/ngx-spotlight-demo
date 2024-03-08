@@ -30,6 +30,7 @@
         position: relative;
        // transition: .3s opacity;
         opacity: 0;
+        transform: translateY(50%);
 
         &.show {
             opacity: 1 !important;

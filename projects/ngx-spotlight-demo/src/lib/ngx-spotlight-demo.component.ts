@@ -15,14 +15,15 @@ export class NgxSpotlightDemoComponent {
 
   script = {
     auto: true,
+    autoClose: false,
     scenes: [
-      {
-        elementSelector: '.getstarted',
-        text:'This is a get started button'
-      },
       {
         elementSelector: '.btn-get-started',
         text:'This is another get started button'
+      },
+      {
+        elementSelector: '.getstarted',
+        text:'This is a get started button'
       },
       {
         elementSelector: '.logo.me-auto',
@@ -47,7 +48,9 @@ export class NgxSpotlightDemoComponent {
   circleX: number = 0;
   circleY: number = 0;
   ngOnInit() {
-    this.followScript();
+    setTimeout(() => {
+      this.followScript();
+    }, 2000)
   }
 
   followScript() {
@@ -72,12 +75,13 @@ export class NgxSpotlightDemoComponent {
     this._showText = false;
     el.scrollIntoView(false);
 
+    this._textHeight = el.clientHeight;
     const rect = el!.getBoundingClientRect();
 
     this.circleX = rect.left + rect.width / 2;
     this.circleY = (rect.top + rect.height / 2) + (window.pageYOffset);
 
-    this._textHeight = el.offsetHeight * 3;
+
 
     setTimeout(() => {
       this._showText = true
@@ -85,7 +89,7 @@ export class NgxSpotlightDemoComponent {
 
     }, this._transitionTime);
 
-    if (this._index + 1 == this.script.scenes.length) {
+    if ((this._index + 1 == this.script.scenes.length ) && this.script.autoClose) {
       setTimeout(() => {
         this._showIsOver = true
       }, this._demoTimeout);
